@@ -35,7 +35,7 @@ const adduser = async (req, res) => {
         const hashedpassword = await bcrypt.hash(password, 10)
         
         // Assuming "Accounts" exists
-        const return_code = await Accounts.addUser({username, hashedpassword})
+        const return_code = await Accounts.create({username, hashedpassword})
         
         res.status(200).send('Success')
     }
