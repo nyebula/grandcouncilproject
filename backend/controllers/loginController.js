@@ -1,7 +1,7 @@
 // Functions that are called by the request handled in the routes folder. Can use models in the models folder to interface with mongodb.
 const Accounts = require('../models/account')
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const login = async (req, res) => {
     try {
