@@ -25,7 +25,8 @@ const login = async (req, res) => {
             res.status(404).send('Failed to login')
         }
     }
-    catch {
+    catch (e) {
+        console.log(e);
         res.status(501).send()
     }
 }

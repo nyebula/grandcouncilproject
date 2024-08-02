@@ -8,7 +8,11 @@ export default function LoginForm() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    axios.post('api/login', {
+    const api = axios.create({
+      baseURL: 'http://localhost:8080/'
+    });
+
+    api.post('/api/login', {
       username: username,
       password: password,
     })
