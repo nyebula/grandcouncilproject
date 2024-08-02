@@ -13,6 +13,4 @@ COPY package*.json /usr/src/app/
 # This is where package.json is used
 RUN npm install
 
-EXPOSE 5173
-
 CMD ["npm", "run", "dev"]
