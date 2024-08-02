@@ -1,5 +1,5 @@
 // Functions that are called by the request handled in the routes folder. Can use models in the models folder to interface with mongodb.
-const Accounts = require('../models/account')
+const accounts = require('../models/usermodel')
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs');
 
@@ -8,16 +8,17 @@ const login = async (req, res) => {
         const {username, password} = req.body
         
         // Assuming "Accounts" exists
-        const account = await Accounts.finduser(username)
+        const user = await accounts.find({name: username})
         
         // Check for nothing found
-        if (account == null) {
+        if (user == null) {
             res.status(404).send('User does not exist')
             return
         }
 
         // Compare to user's password
-        if (await bcrypt.compare(password, account.password)) {
+        if (await bcrypt.compare(password, user.password)) {
+            console.log('Successfully found ' + user.name)
             res.status(200).send('Success')
         }
         else {
@@ -31,11 +32,11 @@ const login = async (req, res) => {
 
 const adduser = async (req, res) => {
     try {
-        const {username, password} = req.body
+        const {username, password, name, admin} = req.body
         const hashedpassword = await bcrypt.hash(password, 10)
         
         // Assuming "Accounts" exists
-        const return_code = await Accounts.create({username, hashedpassword})
+        const return_code = await accounts.create({username, hashedpassword, name, admin})
         
         res.status(200).send('Success')
     }

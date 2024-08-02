@@ -1,7 +1,7 @@
 // This will house the schema (structure) of a login/account of the database
 const mongoose = require('mongoose')
 
-const accountschema = new mongoose.Schema({
+const userschema = new mongoose.Schema({
     username: {
         type: String,
         trim: true,
@@ -11,9 +11,19 @@ const accountschema = new mongoose.Schema({
         type: String,
         trim: true,
         required: true
+    },
+    name: {
+        type: String,
+        trim: true,
+        required: true
+    },
+    admin: {
+        type: Boolean,
+        trim: true,
+        required: true
     }
 });
 
-const account = mongoose.model('Account', accountschema);
+const user = mongoose.model('User', userschema);
 
-module.exports = {account};
+module.exports = {user};
