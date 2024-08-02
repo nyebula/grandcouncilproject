@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import axios from 'axios';
 
 export default function LoginForm() {
   const [username, setUsername] = useState('');
@@ -7,7 +8,17 @@ export default function LoginForm() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    console.log(username);
+    axios.post('api/login', {
+      username: username,
+      password: password,
+    })
+    .then(function (response) {
+      console.log(resopnse);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
   }
   
   return(
@@ -26,7 +37,7 @@ export default function LoginForm() {
             placeholder='Password' 
             type='password' 
             name='password' 
-            onChange={e => setUsername(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
           />
           <br />
           <button type='submit' onClick={handleSubmit}>Login</button>
