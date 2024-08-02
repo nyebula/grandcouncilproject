@@ -1,4 +1,4 @@
-FROM node:lts-slim
+FROM node:lts-slim AS development
 
 # Set working directory
 WORKDIR /usr/src/app/
@@ -8,11 +8,11 @@ COPY src/ /usr/src/app/
 COPY public/ /usr/src/app/
 
 # Copy package.json so that node can install all the dependencies
-COPY package.json /usr/src/app/
+COPY package*.json /usr/src/app/
 
 # This is where package.json is used
 RUN npm install
 
-CMD ["npm", "run", "start"]
+EXPOSE 5173
 
-
+CMD ["npm", "run", "dev"]

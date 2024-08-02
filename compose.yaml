@@ -29,7 +29,7 @@ services:
       - express-mongo
       - react-express
     expose: 
-      - 3000
+      - 5173
   mongo:
     restart: always
     image: mongo:4.2.0

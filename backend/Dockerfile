@@ -1,31 +1,16 @@
-# syntax=docker/dockerfile:1.4
-
 FROM node:lts-buster-slim AS development
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/
 
-COPY package.json /usr/src/app/package.json
-COPY package-lock.json /usr/src/app/package-lock.json
-RUN npm ci
+COPY package*.json /usr/src/app/
 
-COPY . /usr/src/app
+RUN npm install
 
-EXPOSE 3000
+# Copy the code and stuff into container 
+COPY src/ /usr/src/app/
+COPY public/ /usr/src/app/
 
-CMD [ "npm", "run", "dev" ]
+EXPOSE 5173
 
-FROM development as dev-envs
-RUN <<EOF
-apt-get update
-apt-get install -y --no-install-recommends git
-EOF
-
-RUN <<EOF
-useradd -s /bin/bash -m vscode
-groupadd docker
-usermod -aG docker vscode
-EOF
-# install Docker tools (cli, buildx, compose)
-COPY --from=gloursdocker/docker / /
 CMD [ "npm", "run", "dev" ]
