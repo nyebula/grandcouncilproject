@@ -17,7 +17,7 @@ export default function LoginForm() {
       password: password,
     })
     .then(function (response) {
-      console.log(resopnse);
+      console.log(response);
     })
     .catch(function (error) {
       console.log(error);

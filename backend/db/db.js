@@ -13,10 +13,19 @@ async function connect() {
   }
   catch (error) {
     console.error(error)
-  } 
-  finally {
-    await client.close();
   }
 }
 
-module.exports = {connect}
+async function fetchlogin(name) {
+  try {
+    const database = client.db("accounts");
+    const users = database.collection("users");
+    const query = {'username': name};
+    const loginInfo = await users.findOne(query);
+    return loginInfo
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+module.exports = {connect, fetchlogin}
