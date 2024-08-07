@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 
 export default function LoginForm() {
   const [username, setUsername] = useState('');
@@ -7,10 +7,6 @@ export default function LoginForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    const api = axios.create({
-      baseURL: 'http://localhost:8080/'
-    });
 
     api.post('/api/login', {
       username: username,
