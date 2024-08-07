@@ -1,8 +1,7 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const config = require("../config/config.json");
-const uri = config.development.MONGODB_URI;
+require("dotenv").config();
 
-const client = new MongoClient(uri, {
+const client = new MongoClient(process.env.MONGODB_URI, {
   useUnifiedTopology: true
 });
 
