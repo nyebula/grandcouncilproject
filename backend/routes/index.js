@@ -1,5 +1,5 @@
 const express = require('express');
-const { userAuth } = require("../utils/userAuth"); 
+const { userAuth } = require("../utils/helpers/userAuth"); 
 const router = express.Router();
 
 router.post('/', (req, res) => {

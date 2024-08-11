@@ -1,6 +1,6 @@
 // Functions that are called by the request handled in the routes folder. Can use models in the models folder to interface with mongodb.
 const db = require("../db/db");
-const {createSecretToken} = require("../utils/secretToken");
+const {createSecretToken} = require("../utils/helpers/secretToken");
 const User = require('../models/usermodel')
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs');
