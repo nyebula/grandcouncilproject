@@ -3,12 +3,13 @@ import './App.css'
 
 //Component Imports
 import LoginForm from './components/LoginForm'
+import HomePage from './pages/Home'
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/"/>
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginForm />} />
       </Routes>
     </div>

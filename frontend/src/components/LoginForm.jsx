@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import api from '../utils/api';
 
 export default function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
+  const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -16,6 +18,10 @@ export default function LoginForm() {
     )
     .then(function (response) {
       console.log(response);
+      setTimeout(() => {
+        console.log("go");
+        navigate("/");
+      }, 1000);
     })
     .catch(function (error) {
       console.log(error);
