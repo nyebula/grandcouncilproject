@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import api from '../utils/api';
 
 export default function LoginForm() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
-  const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
