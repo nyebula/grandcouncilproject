@@ -9,9 +9,19 @@ const app = express();
 
 db.connect()
 
-app.use(cors());
+
+app.use(cors({
+  methods: 'GET,POST,PATCH,DELETE,OPTIONS',
+  optionsSuccessStatus: 200,
+  origin: 'http://localhost:3000',
+  credentials: true
+}));
+app.options('*', cors());
+
+
 app.use(cookieParser())
 app.use(express.json());
+
 
 // adding routes
 app.use("/", index);

@@ -11,7 +11,9 @@ export default function LoginForm() {
     api.post('/api/login', {
       username: username,
       password: password,
-    })
+    },
+      { withCredentials: true }
+    )
     .then(function (response) {
       console.log(response);
     })
