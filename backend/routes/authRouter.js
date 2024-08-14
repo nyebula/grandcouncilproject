@@ -6,5 +6,13 @@ const router = express.Router();
 
 router.use(userVerification)
 router.post('/home', home)
+router.post('/logout', (req, res) => {
+    try {
+        res.clearCookie('token');
+    }
+    catch (e) {
+        console.log(e);
+    }
+})
 
 module.exports = router;
