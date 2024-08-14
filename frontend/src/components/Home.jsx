@@ -1,23 +1,12 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
 import api from '../utils/api';
 
 export default function Home() {
   const navigate = useNavigate();
-  const [cookies, removeCookie] = useCookies([]);
 
-  console.log(useCookies([]));
 
   useEffect(() => {
-    /*
-    if (!cookies.token) {
-      console.log("No Cookie");
-      navigate('/login');
-      return;
-    }
-    */
-    
     api.post('/api/home',
       { }, 
       { withCredentials: true }
@@ -30,15 +19,25 @@ export default function Home() {
     .catch(function (error) {
       console.log(error)
       if (error.status == 401) {
-        removeCookie('token');
         navigate('/login');
       }
     });
   }, [cookies, navigate, removeCookie]);
 
   const Logout = () => {
-    removeCookie("token");
-    navigate("/login");
+    api.post('/api/logout',
+      { },
+        { withCredentials: true }
+      )
+      .then(function (response) {
+        navigate("/login");
+      })
+      .catch(function (error) {
+        console.log(error)
+        if (error.status == 401) {
+          navigate('/login');
+        }
+      });
   };
 
   return (
