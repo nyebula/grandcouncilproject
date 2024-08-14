@@ -7,10 +7,16 @@ export default function Home() {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
 
+  console.log(useCookies([]));
+
   useEffect(() => {
+    /*
     if (!cookies.token) {
+      console.log("No Cookie");
       navigate('/login');
+      return;
     }
+    */
     
     api.post('/api/home',
       { }, 
@@ -18,7 +24,8 @@ export default function Home() {
     )
     .then(function (response) {
       //Nothing Yet
-      console.log(reponse)
+      console.log("Yes Cookie");
+      console.log(response)
     })
     .catch(function (error) {
       console.log(error)
@@ -31,7 +38,7 @@ export default function Home() {
 
   const Logout = () => {
     removeCookie("token");
-    navigate("/signup");
+    navigate("/login");
   };
 
   return (
