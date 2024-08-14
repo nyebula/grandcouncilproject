@@ -9,6 +9,7 @@ router.post('/home', home)
 router.post('/logout', (req, res) => {
     try {
         res.clearCookie('token');
+        res.end();
     }
     catch (e) {
         console.log(e);

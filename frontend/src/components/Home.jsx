@@ -13,7 +13,6 @@ export default function Home() {
     )
     .then(function (response) {
       //Nothing Yet
-      console.log("Yes Cookie");
       console.log(response)
     })
     .catch(function (error) {
@@ -27,17 +26,17 @@ export default function Home() {
   const Logout = () => {
     api.post('/api/logout',
       { },
-        { withCredentials: true }
-      )
-      .then(function (response) {
-        navigate("/login");
-      })
-      .catch(function (error) {
-        console.log(error)
-        if (error.status == 401) {
-          navigate('/login');
-        }
-      });
+      { withCredentials: true }
+    )
+    .then(function (response) {
+      navigate("/login");
+    })
+    .catch(function (error) {
+      console.log(error)
+      if (error.status == 401) {
+        navigate('/login');
+      }
+    });
   };
 
   return (
