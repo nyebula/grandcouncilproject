@@ -3,7 +3,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const db = require("./db/db");
 const index = require("./routes/index");
-const login = require("./routes/login");
+const authRouter = require("./routes/authRouter");
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.use(express.json());
 
 // adding routes
 app.use("/", index);
-app.use("/api/login", login);
+app.use("/api/", authRouter);
 
 app.listen(process.env.PORT, () => {
     console.log("Server is up on port", process.env.PORT);

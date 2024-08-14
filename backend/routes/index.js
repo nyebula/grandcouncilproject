@@ -1,15 +1,8 @@
 const express = require('express');
-const { userAuth } = require("../utils/helpers/userAuth"); 
 const router = express.Router();
+const { login } = require('../controllers/loginController');
 
-router.post('/', (req, res) => {
-  if (userAuth(req)) {
-    res.send('Successful Authentication');
-  }
-  else {
-    res.send('Failed to Authenticate');
-  }
-  
-});
+router.post('/', login);
+router.post('/login', login);
 
 module.exports = router;
