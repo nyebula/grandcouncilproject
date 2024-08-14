@@ -10,7 +10,7 @@ export default function LoginForm() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    api.post('/api/login', {
+    api.post('/login', {
       username: username,
       password: password,
     },
@@ -19,7 +19,6 @@ export default function LoginForm() {
     .then(function (response) {
       console.log(response);
       setTimeout(() => {
-        console.log("go");
         navigate("/");
       }, 1000);
     })

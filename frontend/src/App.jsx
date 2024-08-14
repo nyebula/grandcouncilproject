@@ -9,8 +9,12 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        //Login and Users with Accounts
+        <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+
+        //Public
+        <Route path="/" />
       </Routes>
     </div>
   );
