@@ -15,7 +15,7 @@ async function connect() {
   }
 }
 
-async function fetchlogin(name) {
+async function fetchuser(name) {
   try {
     const database = client.db("accounts");
     const users = database.collection("users");
@@ -27,4 +27,17 @@ async function fetchlogin(name) {
   }
 }
 
-module.exports = {connect, fetchlogin}
+async function fetchid(id) {
+  try {
+    const database = client.db("accounts");
+    const users = database.collection("users");
+    const query = {'_id': id};
+    const loginInfo = await users.findOne(query);
+    return loginInfo
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+
+module.exports = {connect, fetchuser, fetchid}

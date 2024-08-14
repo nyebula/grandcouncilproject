@@ -7,7 +7,7 @@ const login = async (req, res) => {
     try {
         const {username, password} = req.body
         
-        const user = await db.fetchlogin(username)
+        const user = await db.fetchuser(username)
         
         if (user == null) {
             res.status(404).send('User does not exist')
