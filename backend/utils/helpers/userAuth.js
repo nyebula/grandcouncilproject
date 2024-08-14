@@ -1,5 +1,5 @@
 require("dotenv").config();
-const db = require("../db/db");
+const db = require("../../db/db");
 const jwt = require("jsonwebtoken");
 
 module.exports.userVerification = (req, res) => {
