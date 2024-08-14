@@ -22,7 +22,7 @@ export default function Home() {
         navigate('/login');
       }
     });
-  }, [cookies, navigate, removeCookie]);
+  }, [navigate]);
 
   const Logout = () => {
     api.post('/api/logout',
