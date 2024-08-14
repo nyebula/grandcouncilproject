@@ -20,7 +20,8 @@ const login = async (req, res) => {
             res.cookie("token", token, {
                 withCredentials: true,
                 httpOnly: true,
-                sameSite: None
+                sameSite: "None"
+                secure: true
             });
             res.cookie("test", "The cookie monster.");
             res.status(200).send('Success')

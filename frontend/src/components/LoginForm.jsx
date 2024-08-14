@@ -19,7 +19,7 @@ export default function LoginForm() {
     .then(function (response) {
       console.log(response);
       setTimeout(() => {
-        navigate("/");
+        navigate("/home");
       }, 1000);
     })
     .catch(function (error) {
